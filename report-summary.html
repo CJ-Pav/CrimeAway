@@ -21,10 +21,8 @@
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <link rel="canonical" href="https://weather-pwa-sample.firebaseapp.com/final/">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-
-  <title>CrimeAway PWA</title>
+  <title>Report Summary</title>
   <link rel="stylesheet" href="https://unpkg.com/purecss@1.0.0/build/pure-min.css" integrity="sha384-nn4HPE8lTHyVtfCBi5yW9d20FjT8BJwUXyWZT9InLYax14RDjBj46LmSztkmNP9w" crossorigin="anonymous">
-
   <link rel="stylesheet" type="text/css" href="styles/inline.css">
 
   <!-- TODO add manifest here -->
@@ -32,7 +30,7 @@
   <!-- Add to home screen for Safari on iOS -->
   <meta name="apple-mobile-web-app-capable" content="yes">
   <meta name="apple-mobile-web-app-status-bar-style" content="black">
-  <meta name="apple-mobile-web-app-title" content="Weather PWA">
+  <meta name="apple-mobile-web-app-title" content="Report Summary>
   <link rel="apple-touch-icon" href="images/icons/icon-152x152.png">
   <meta name="msapplication-TileImage" content="images/icons/icon-144x144.png">
   <meta name="msapplication-TileColor" content="#2F3BA2">
@@ -41,46 +39,114 @@
 
   <header class="header">
     <h1 class="header__title">CrimeAway PWA</h1>
-    <button id="butRefresh" class="headerButtonL" aria-label="Refresh"></button>
     <button id="butAdd" class="headerButtonL" aria-label="Add"></button>
     <button id="butSignup" class="headerButtonR" aria-label="Signup">SignUp</button>
     <button id="butUser" class="headerButtonR" aria-label="User">Edit</button>
   </header>
 
   <main class="main">
-
-    <article class="greeter">
-      - Welcome to CrimeAway! Please choose an option below or sign up with a menu above!
-    </article>
-
-    <article class="opt-box">
-      <h4 class="opt-title">Report a Crime (coming soon)</h4>
-      <div class="opt-text">
-        <p>This feature is in testing and will be coming soon!</p>
-        <p>Can you even believe it? You can call from right here!</p>
-      </div>
-    </article>
-
-    <article class="opt-box">
-      <h4 class="opt-title">View My Reports (coming soon)</h4>
-      <div class="opt-text">
-        <p>Logged in? You can soon view reports here.</p>
-      </div>
-    </article>
-
-    <article class="opt-box">
-      <h4 class="opt-title">What should I be aware of in my area?? (coming soon)</h4>
-      <div class="opt-text">
-          <p>Such new features.</p>
+    <div class="card cardTemplate weather-forecast" hidden>
+      <div class="city-key" hidden></div>
+      <div class="card-last-updated" hidden></div>
+      <div class="location"></div>
+      <div class="date"></div>
+      <div class="description"></div>
+      <div class="current">
+        <div class="visual">
+          <div class="icon"></div>
+          <div class="temperature">
+            <span class="value"></span><span class="scale">°F</span>
+          </div>
         </div>
-    </article>
-
-
-    <div class="dialog-container add">
-    <div class="dialog">
-      <div class="dialog-title">
-        Add new city
+        <div class="description">
+          <div class="humidity"></div>
+          <div class="wind">
+            <span class="value"></span>
+            <span class="scale">mph</span>
+            <span class="direction"></span>°
+          </div>
+          <div class="sunrise"></div>
+          <div class="sunset"></div>
+        </div>
       </div>
+      <div class="future">
+        <div class="oneday">
+          <div class="date"></div>
+          <div class="icon"></div>
+          <div class="temp-high">
+            <span class="value"></span>°
+          </div>
+          <div class="temp-low">
+            <span class="value"></span>°
+          </div>
+        </div>
+        <div class="oneday">
+          <div class="date"></div>
+          <div class="icon"></div>
+          <div class="temp-high">
+            <span class="value"></span>°
+          </div>
+          <div class="temp-low">
+            <span class="value"></span>°
+          </div>
+        </div>
+        <div class="oneday">
+          <div class="date"></div>
+          <div class="icon"></div>
+          <div class="temp-high">
+            <span class="value"></span>°
+          </div>
+          <div class="temp-low">
+            <span class="value"></span>°
+          </div>
+        </div>
+        <div class="oneday">
+          <div class="date"></div>
+          <div class="icon"></div>
+          <div class="temp-high">
+            <span class="value"></span>°
+          </div>
+          <div class="temp-low">
+            <span class="value"></span>°
+          </div>
+        </div>
+        <div class="oneday">
+          <div class="date"></div>
+          <div class="icon"></div>
+          <div class="temp-high">
+            <span class="value"></span>°
+          </div>
+          <div class="temp-low">
+            <span class="value"></span>°
+          </div>
+        </div>
+        <div class="oneday">
+          <div class="date"></div>
+          <div class="icon"></div>
+          <div class="temp-high">
+            <span class="value"></span>°
+          </div>
+          <div class="temp-low">
+            <span class="value"></span>°
+          </div>
+        </div>
+        <div class="oneday">
+          <div class="date"></div>
+          <div class="icon"></div>
+          <div class="temp-high">
+            <span class="value"></span>°
+          </div>
+          <div class="temp-low">
+            <span class="value"></span>°
+          </div>
+        </div>
+      </div>
+    </div>
+  </main>
+
+  <div class="dialog-container add">
+    <div class="dialog">
+      <div class="dialog-title">Add new city</div>
       <div class="dialog-body">
         <select id="selectCityToAdd">
           <!-- Values map to Yahoo Weather API Where On Earth Identifiers (WOEIDs).
@@ -101,37 +167,12 @@
     </div>
   </div>
 
-  <div class="dialog-container signup">
-    <div class="dialog">
-      <div class="dialog-title">New User Signup</div>
-      <div class="dialog-body">
-        <input placeholder="First Name" type="text" required>
-        <input placeholder="Last Name" type="text" required>
-        <input placeholder="Phone (optional)" type="tel">
-        <input placeholder="Email (optional)" type="email">
-        <input placeholder="Address (optional)" type="text">
-      </div>
-      <div class="dialog-buttons">
-        <button id="butSignupConfirm" class="button">Signup</button>
-        <button id="butSignupCancel" class="button">Cancel</button>
-      </div>
-    </div>
-  </div>
-
   <div class="dialog-container user">
     <div class="dialog">
       <div class="dialog-title">Edit User Data</div>
       <div class="dialog-body">
-
         <form class="pure-form pure-form-aligned">
           <fieldset>
-
-              <div class="pure-u-1 pure-u-md-1-2">
-                  <img item-width="100px" item-height="100px" style="Height: 100px; Width: 100px;" src="images/camera-account.svg">
-                  <input type="checkbox" name="userAnnonCheck" value="Public">Anonymous<br>
-                </div>
-
-
             <div class="pure-u-1 pure-u-md-1-2">
               <label for="name">First Name</label>
               <input id="name" class="pure-u-23-24" type="text" placeholder="First Name..">
@@ -143,7 +184,7 @@
             </div>
 
             <div class="pure-u-1 pure-u-md-1-2">
-              <label for="state">Contact Type</label>
+              <label for="state">Edit This</label>
               <select id="state" class="pure-control-group">
                 <option>Phone Number</option>
                 <option>Email</option>
@@ -162,15 +203,13 @@
 
           </fieldset>
         </form>
-    </div>
-  </main>
+  </div>
 
   <div class="loader">
     <svg viewBox="0 0 32 32" width="32" height="32">
       <circle id="spinner" cx="16" cy="16" r="14" fill="none"></circle>
     </svg>
   </div>
-
 
   <!-- Uncomment the line below when ready to test with fake data -->
   <script src="scripts/app.js" async></script>
